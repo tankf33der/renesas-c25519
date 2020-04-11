@@ -49,6 +49,13 @@ void print_vector(const u8 *buf, size_t size)
 
 int main(void) {
     int status = 0;
+
+    u8 mikepk[32];
+    static const u8 mike[32] = {255, 1, 2, 3 ,4, 5 ,6 ,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 255};
+    edsign_sec_to_pub(mikepk, mike);
+    print_vector(mikepk, 32);
+
+
     RANDOM_INPUT(message, 32);
     RANDOM_INPUT(sk, 32);
     u8 pk       [32]; edsign_sec_to_pub(pk, sk);
